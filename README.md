@@ -35,6 +35,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 The pokemon-api looks like this, see by your self
 
-![image](https://user-images.githubusercontent.com/68193830/187542734-60ea6fc8-c8c5-43e4-a165-48e57481992f.png)
+![image](https://user-images.githubusercontent.com/68193830/187542900-99481fef-aa34-4aaa-a9d6-40f1b9eae0e0.png)
+
+
 
 
