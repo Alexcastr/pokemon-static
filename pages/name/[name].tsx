@@ -23,22 +23,23 @@ const PokemonByNamePAge:NextPage<Props> = ({pokemon}) => {
 
   const [isInFavorites, setIsInFavorites] = useState(localFavorites.existFavorites(pokemon.id));
   
-  const onToggleFavorites = () => {
-    localFavorites.toggleFavorites(pokemon.id);
-    if(isInFavorites){
-      confetti({
-        zIndex: 999,
-        particleCount: 100,
-        spread: 160,
-        angle: -100,
-        origin: {
-          x: 1,
-          y: 0
-        }
-      })
-    }
-    // para que se actualice el estado de favoritos, el componente texto
-    setIsInFavorites(!isInFavorites);
+  const onToggleFavorite = () => {
+    localFavorites.toggleFavorites( pokemon.id );
+    setIsInFavorites( !isInFavorites );
+
+    if ( isInFavorites ) return;
+      
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 160,
+      angle: -100,
+      origin: {
+        x: 1,
+        y: 0,
+      }
+    })
+
   }
 
   return (
@@ -65,7 +66,7 @@ const PokemonByNamePAge:NextPage<Props> = ({pokemon}) => {
          {pokemon.name}
         </Text>
         <Button  
-        onClick={onToggleFavorites}
+        onClick={onToggleFavorite}
         color="gradient" ghost={!isInFavorites}>
           {isInFavorites ? "En favoritos" : "Adicionar en favoritos"}
          
