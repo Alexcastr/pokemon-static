@@ -107,7 +107,8 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
   return {
     paths: pokemons55.map(id => ({ params: { id } })),
-    fallback: false
+    // fallback: false, en la pagina dinamica tengo la forma con fallback false
+    fallback: 'blocking'
   }
 }
 
@@ -125,7 +126,6 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
       }
     }
   }
-
 
   return {
     props: {
