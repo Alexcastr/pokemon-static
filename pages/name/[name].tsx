@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import Image from 'next/image';
-import type { NextPage,GetStaticProps, GetStaticPaths } from 'next'
 
-import { Button, Card, Grid, Text,Container } from '@nextui-org/react';
-import { Layout } from '../../components/layouts';
-import { pokeApiName } from '../../api';
-import { Pokemon, PokemonListResponse } from '../../interfaces';
-import { localFavorites } from '../../utils';
+import type { NextPage,GetStaticProps, GetStaticPaths } from 'next'
+import { Button, Card, Grid, Text,Container, Image } from '@nextui-org/react';
 import confetti from 'canvas-confetti'
+
+import { Layout } from '../../components/layouts';
+
+
+import { pokeApi } from '../../api';
+import { Pokemon, PokemonListResponse } from '../../interfaces';
+import { localFavorites, getPokemonInfo } from '../../utils';
+
+
 
 
 
@@ -104,7 +108,7 @@ const PokemonByNamePAge:NextPage<Props> = ({pokemon}) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { data } = await pokeApiName.get<PokemonListResponse>('/pokemon?limit=151')
+  const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151')
   const pokemonNames: string[] = data.results.map(pokemon => pokemon.name)
 
   return {
@@ -116,11 +120,10 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const {name} = params as {name: string};
-  const {data} = await pokeApiName.get<Pokemon>(`/pokemon/${name}`);
   
   return {
     props: {
-      pokemon: data
+      pokemon: await getPokemonInfo(name)
     }
   }
 }
