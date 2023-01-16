@@ -1,3 +1,11 @@
+
+# Main app image
+
+<image src="/public/images/favorite_poke.png" alt="Favorite effect">
+<image src="/public/images/pokemon_mainpage.png" alt="Main pokemonm page">
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
